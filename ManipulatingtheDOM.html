@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Example</title>
+    <style>
+        /* Styling for the list items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+
+    <script>
+        // Function to generate a random string of given length
+        function getRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        // Function to add a new list item
+        function addNewItem() {
+            const ul = document.getElementById('myList');
+            const newLi = document.createElement('li');
+            newLi.textContent = 'Fourth item';
+            ul.appendChild(newLi);
+        }
+
+        // Function to change text of clicked item to a random string
+        function changeTextOnClick(event) {
+            event.target.textContent = getRandomString(10);
+        }
+
+        // Add the new item and set up event listeners when the page loads
+        window.onload = function() {
+            addNewItem();
+            const listItems = document.querySelectorAll('#myList li');
+            listItems.forEach(item => {
+                item.onclick = changeTextOnClick;
+            });
+        };
+    </script>
+</body>
+</html>

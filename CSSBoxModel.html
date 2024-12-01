@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Example</title>
+    <style>
+        /* Initial styling for the div element */
+        #box {
+            width: 200px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #333;
+            margin: 20px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease; /* Smooth transitions for all properties */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">CSS Box Model</div>
+
+    <script>
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Get the box element
+        const box = document.getElementById('box');
+
+        // Change the background color on click
+        box.onclick = function() {
+            box.style.backgroundColor = getRandomColor();
+        };
+
+        // Change the border color on mouse over
+        box.onmouseover = function() {
+            box.style.borderColor = getRandomColor();
+        };
+
+        // Reset the border color on mouse out
+        box.onmouseout = function() {
+            box.style.borderColor = '#333';
+        };
+    </script>
+</body>
+</html>
